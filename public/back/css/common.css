@@ -10,3 +10,114 @@
 .mt_150 {
   margin-top: 150px;
 }
+/* 公共部分 */
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+
+}
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 首页 */
+.lt-aside {
+  width: 180px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #222D32;
+  z-index: 999;
+  transition: all 1s;
+}
+.lt-aside.hidemenu {
+  left: -180px;
+}
+.lt-aside .title {
+  width: 180px;
+  height: 50px;
+  background-color: #367FA9;
+  line-height: 50px;
+  text-align: center;
+  
+}
+.lt-aside .title a {
+  font-size: 22px;
+  color: #fff;
+}
+.lt-aside .user {
+  padding-top: 30px;
+  height: 180px;
+
+}
+.lt-aside .user img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.lt-aside .user p {
+  color: #fff;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  height: 40px;
+}
+.lt-aside .nav {
+  padding-left: 40px;
+}
+.lt-aside .nav a{
+  color: #fff;
+  display: block; 
+  height: 40px;
+  line-height: 40px;
+}
+.lt-aside .nav .child {
+  padding-left: 20px;
+}
+.lt-main {
+  padding-left: 180px;
+  padding-top: 50px;
+  transition: all 1s;
+}
+.lt-main.hidemenu {
+  padding-left: 0px;
+}
+.lt-main .header {
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #3C8DBC;
+  padding-left: 180px;
+  transition: all 1s;
+}
+.header.hidemenu {
+  padding-left: 0px;
+}
+.lt-main .header a {
+  color: #fff;
+  font-size: 16px;
+}
+.lt-main .icon-menu ,
+.lt-main .icon-logout {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+ .breadcrumb {
+  margin-top:20px; 
+}
+.modal-body p{
+  
+  color: #A94442;
+ 
+}
