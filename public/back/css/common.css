@@ -70,16 +70,22 @@ a:active {
   height: 40px;
 }
 .lt-aside .nav {
-  padding-left: 40px;
+  
 }
 .lt-aside .nav a{
   color: #fff;
   display: block; 
   height: 40px;
   line-height: 40px;
+  border-left: 3px solid transparent;
+  padding-left: 40px;
 }
-.lt-aside .nav .child {
-  padding-left: 20px;
+.lt-aside .nav a.current {
+  border-left :3px solid #006699;
+  background-color: #1D1F21;
+}
+.lt-aside .nav .child a{
+  padding-left: 60px;
 }
 .lt-main {
   padding-left: 180px;

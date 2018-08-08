@@ -2,14 +2,24 @@
   //6-判断用户是否登录,实现登录拦截
   //通过ajax发送请求,把前端获取到的用户名和密码,发送到后台核实
   //如果两者一致,则表示登陆过,反之没有登陆过,跳回登录页
-  $.ajax({
-    type : "get",
-    url : "/employee/checkRootLogin",
-    dataType : "json",
-    success : function(info){
-      console.log(info);
-    }
-  });
+  //如果是登录页,本来就是要进行登录的,所以就不需要再进行登录拦截啦
+  if(location.href.indexOf('login.html') === -1){
+    $.ajax({
+      type : "get",
+      url : "/employee/checkRootLogin",
+      dataType : "json",
+      success : function(info){
+        console.log(info);
+        if(info.success){
+          console.log('正常浏览');
+        }
+        if(info.error === 400){
+          //跳转到登录页
+          location.href = "login.html";
+        }
+      }
+    });
+  }
 
   //1-因为每个页面都有进度条功能,所以应该放在公共部分里面
   $(document).ajaxStart(function(){
