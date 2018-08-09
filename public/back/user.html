@@ -55,13 +55,43 @@
         <li><a href="#">管理系统</a></li>
         <li>用户管理</li>
       </ol>
+
+      <!-- 表格 -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>			
+            <th>序号</th>
+            <th>用户名</th>
+            <th>手机号</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>			
+            <td>1</td>
+            <td>itcast</td>
+            <td>15102324243</td>
+            <td>正常</td>
+            <td><botton class="btn btn-danger">禁用</botton></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 分页 -->
+      <!--boostrap分页插件如果是3.0版本，要求这个盒子必须是ul-->
+      
+        <div class="text-right">
+            <ul id="paginator"></ul>
+        </div>
+      
    </div>
   
 </div>
 
 
 
-<!-- 模态框 -->
+<!-- 主体头部退出按钮的模态框 -->
 
 <div class="modal fade" tabindex="-1" id="loginoutModal">
     <div class="modal-dialog modal-sm" role="document">
@@ -79,14 +109,62 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
+
+<!--禁用和启用点击出现的模态框  -->
+<div class="modal fade" tabindex="-1" id="userModal">
+    <div class="modal-dialog modal-sm" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</span></button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <p><i class="glyphicon glyphicon-info-sign"></i>你确定要执行此操作吗？</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="submitBtn">确认</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!-- 模板引擎 -->
+<!-- 通过点击的页数不同,前面的需要也需要有变化
+  i+1 + 前面已经渲染过的页数
+-->
+<script type="text/html" id="tmp">
+  {{each rows v i}}
+    <tr>	
+      <td>{{i+1}}</td>
+      <td>{{v.username}}</td>
+      <td>{{v.mobile}}</td>
+      <td>{{v.isDelete === 1 ? '正常' : '禁用'}}</td>
+      <td data-id="{{ v.id }}">
+        {{if v.isDelete === 1}}
+        <botton class="btn btn-danger">禁用</botton></td>
+        {{/if}}
+
+        {{if v.isDelete === 0}}
+        <botton class="btn btn-success">启用</botton></td>
+        {{/if}}
+    </tr>
+  {{/each}}
+</script>
+
 
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="./js/common.js"></script>
-<!-- <script src="./js/common.js"></script> -->
+<script src="./js/user.js"></script>
+
+
 
 </body>
 </html>
