@@ -20,6 +20,10 @@ a:active {
   color: #A94442;
 }
 
+.mb_20 {
+  margin-bottom: 20px;
+}
+
 
 
 .panel .panel-title {
@@ -123,6 +127,7 @@ a:active {
   background-color: #3C8DBC;
   padding-left: 180px;
   transition: all 1s;
+  z-index: 666;
 }
 .lt_topbar.hidemenu {
   padding-left: 0px;

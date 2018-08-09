@@ -56,13 +56,33 @@
         <li>分类管理</li>
         <li>一级分类</li>
       </ol>
+      <!-- 添加分类按钮 -->
+      <!-- Standard button -->
+      <button type="button" class="btn btn-default cateBtn">添加分类</button>
+      <!-- 表格 -->
+      <table class="table table-bordered table-hover mt_20">
+        <thead>
+          <tr >	
+            <th width="20%">序号</th>
+            <th width="80%">一级分类名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 挖个坑 -->
+        </tbody>
+      </table>
+      <!-- 分页容器 -->
+      <!-- 如果bootstrap是用的3.0的版本,容器必须要用ul -->
+      <div class="text-right">
+          <ul id="paginator"></ul>
+      </div>
+     
    </div>
-  
 </div>
 
 
 
-<!-- 模态框 -->
+<!-- 主体头部退出的模态框 -->
 
 <div class="modal fade" tabindex="-1" id="loginoutModal">
     <div class="modal-dialog modal-sm" role="document">
@@ -80,14 +100,50 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
+<!-- 点击添加分类的模态框 -->
+<div class="modal fade" tabindex="-1" id="addModal">
+    <div class="modal-dialog modal-sm" >
+      <div class="modal-content">
+        <!-- 下面为什么用form包起来,是因为下面的添加按钮点击不了,需要用form包起来才能点击 -->
+        <form id="form">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</span></button>
+            <h4 class="modal-title">添加分类</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" class="form-control" name="categoryName" placeholder="请输入一级分类">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">添加</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+
+  <!-- 准备模板 -->
+  <script type="text/html" id="firstTmp">
+    {{each rows v i}}
+      <tr>
+        <td>{{i+1 + (page - 1) * size}}</td>
+        <td>{{v.categoryName}}</td>
+      </tr>
+    {{/each}}
+  </script>
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="./js/common.js"></script>
-<!-- <script src="./js/common.js"></script> -->
+<script src="./js/first.js"></script>
 
 </body>
 </html>
