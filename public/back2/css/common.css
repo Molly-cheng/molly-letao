@@ -106,7 +106,6 @@ a:active {
 /* .lt_main 的样式 */
 .lt_main {
   height: 2000px;
-  background-color: pink;
   padding-left: 180px;
   padding-top: 50px;
   transition: all 1s;
@@ -136,4 +135,17 @@ a:active {
   color: #fff;
   text-align: center;
   font-size: 18px;
+}
+
+.echarts_1,
+.echarts_2 {
+  width: 48%;
+  height: 400px;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+  text-align: center;
+  /* 表格垂直居中 */
+  vertical-align: middle;
 }

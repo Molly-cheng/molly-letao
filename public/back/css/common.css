@@ -127,3 +127,8 @@ a:active {
   color: #A94442;
  
 }
+.echarts_1,
+.echarts_2 {
+  width: 50%;
+  height: 400px;
+}
