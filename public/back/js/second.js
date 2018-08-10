@@ -123,7 +123,7 @@ $(function(){
           },  
         }
       },
-      categoryName: {
+      brandName: {
         validators: {
           //非空校验
           notEmpty: {
@@ -143,8 +143,7 @@ $(function(){
     }
   });
 
-  // 重置模态框的表单, 不仅校验状态要重置, 文本内容也要重置
-  $('#form').data("bootstrapValidator").resetForm(true);
+ 
 
   //6-验证表单成功事件
   $('#form').on('success.form.bv',function(e){
@@ -165,7 +164,7 @@ $(function(){
           currentPage = 1;
           render();
           //表单的文本内容和状态
-          $('#form').data('bootstrapValidator').resetForm('true');
+          $('#form').data('bootstrapValidator').resetForm(true);
           //手动重置文本内容和图片路径
           $('.dropdownText').text('请选择一级分类');
           $('.imgBox img').attr('src','images/none.png');

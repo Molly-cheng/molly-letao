@@ -55,13 +55,36 @@
         <li><a href="#">管理系统</a></li>
         <li>商品管理</li>
       </ol>
+      <!-- 添加商品按钮 -->
+      <button type="button" class="btn btn-default addBtn">添加商品</button>
+      <!-- 表格 -->
+      <table class="table table-bordered table-hover mt_20">
+        <thead>
+          <tr>						
+            <th width="10%">序号</th>
+            <th width="25%">商品名称</th>
+            <th width="25%">商品描述</th>
+            <th width="10%">商品库存</th>
+            <th width="10%">商品尺寸</th>
+            <th width="10%">商品状态</th>
+            <th width="10%">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 挖个坑 -->
+        </tbody>
+      </table>
+      <!-- 分页容器 -->
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
    </div>
   
 </div>
 
 
 
-<!-- 模态框 -->
+<!-- 退出当前页面的模态框 -->
 
 <div class="modal fade" tabindex="-1" id="loginoutModal">
     <div class="modal-dialog modal-sm" role="document">
@@ -81,12 +104,118 @@
     </div>
   </div>
 
+  <!--添加商品的模态框  -->
+  <div class="modal fade" tabindex="-1" id="addModal">
+    <!-- 模态框的大小 modal-sm代表小模态框
+      modal-lg代表大模态框 不写表示中模态框 -->
+    <div class="modal-dialog " >
+      <div class="modal-content">
+        <form id="form">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" >&times;</span></button>
+            <h4 class="modal-title">添加分类</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" >
+                  <span class="dropdownText">请选择二级分类</span>
+                  <!-- 小三角 -->
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" >
+                  <!-- 挖个坑 -->
+                </ul>
+                <!-- 因为ul下面的不是表单元素,所以无法发送ajax请求 -->
+                <input type="hidden" name="brandId" >
+                <!-- statu产品上下架, 默认上架(1) 后台要求发送这个数据-->
+                <input type="hidden" name="statu">
+            </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="proName" placeholder="请输入商品名称">
+            </div>
+            <div class="form-group">
+              <textarea name="proDesc" class="form-control" cols="30" rows="5" placeholder="请输入商品描述"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="num" placeholder="请输入商品库存">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="size" placeholder="请输入商品尺码">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="oldPrice" placeholder="请输入商品原价">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="price" placeholder="请输入商品现价">
+            </div>
+            <div class="form-group">
+              <!--
+                1. type:file
+                2. 必须指定name属性，因为后台通过这个name属性去获取图片
+                3. 必须data-url：指定图片上传的地址
+                -->
+              <label for="fileupload" class="btn btn-default">上传图片</label>
+              <input type="file" id="fileupload" multiple class="form-control" name="pic1" data-url="/product/addProductPic"  style="display: none" >
+            </div>
+            <div class="form-group imgBox">
+              
+              <!-- 用隐藏域 -->
+              <!-- 用来标记当前上传照片 -->
+              <input type="hidden" name="picStatus">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary" id="addBtn">添加</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- 产品页面模板引擎 -->
+<script type="text/html" id="productTmp">
+  {{ each rows v i }}
+    <tr>	 				
+      <td>{{ i+1 + (page - 1) * size}}</td>
+      <td>{{ v.proName }}</td>
+      <td>{{ v.proDesc }}</td>
+      <td>{{ v.num }}</td>
+      <td>{{ v.size }}</td>
+      <td>
+        {{  v.statu === 1 ? "已上架" : "已下架" }}
+      </td>
+      <td>
+        {{ if v.statu === 1 }}
+          <botton class="btn btn-danger">下架</botton>
+        {{ else }}
+          <botton class="btn btn-success">下架</botton>
+        {{ /if }}
+      </td>
+    </tr>
+  {{ /each }}
+</script>
+
+
+<!-- 模态框里面二级分类模板 -->
+<script type="text/html" id="secondTmp">
+  {{ each rows v i }}
+    <li><a href="#" data-id="{{ v.id }}">{{ v.brandName }}</a></li>
+  {{ /each }}
+</script>
+
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="./js/common.js"></script>
-<!-- <script src="./js/common.js"></script> -->
+<script src="./js/product.js"></script>
 
 </body>
 </html>

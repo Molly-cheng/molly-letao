@@ -91,7 +91,6 @@ $(function() {
    * 2. 准备结构, name data-url
    * 3. 进行文件上传初始化, 配置 done 回调函数
    * */
-
   // 4. 进行文件上传初始化
   $('#fileupload').fileupload({
     // 配置返回的数据格式
@@ -110,7 +109,6 @@ $(function() {
       $('#form').data("bootstrapValidator").updateStatus("brandLogo", "VALID");
     }
   });
-
 
 
   // 5. 实现表单校验
@@ -156,7 +154,6 @@ $(function() {
   });
 
 
-
   // 6. 注册表单校验成功事件, 阻止默认提交, 通过 ajax 进行提交
   $("#form").on("success.form.bv", function( e ) {
     e.preventDefault();
@@ -186,7 +183,6 @@ $(function() {
     })
 
   })
-
 
 
 });
